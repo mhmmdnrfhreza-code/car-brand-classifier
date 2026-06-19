@@ -2,7 +2,7 @@
 
 Meskipun Kerangka Kerja Klasifikasi Logo Brand Berbasis **MobileNetV2** + **FastAPI** Saat Ini Dilatih Untuk Logo Mobil, Namun Dapat Digunakan Juga Untuk Kasus Lain Yang Lebih Luas. Seperti, Mengenali Logo Brand Populer Dari Berbagai Bidang/Sektor Global (F&B, Finance, Fashion, dan Sebagainya) Cukup Dengan Menyesuaikan Datasetnya.
 
-Dataset: [Car Brand Logos](https://www.kaggle.com/datasets/volkandl/car-brand-logos) — 8 kelas: `Hyundai, Lexus, Mazda, Mercedes, Opel, Skoda, Toyota, Volkswagen`.
+Dataset: [Car Brand Logos](https://www.kaggle.com/datasets/volkandl/car-brand-logos) - 8 Kelas: `Hyundai, Lexus, Mazda, Mercedes, Opel, Skoda, Toyota, Volkswagen`.
 
 ## Fitur
 
@@ -56,13 +56,15 @@ Dataset Tidak Disertakan Dalam Repo. Download Lalu Ekstrak Ke `dataset/`:
 pip install kaggle
 kaggle datasets download -d volkandl/car-brand-logos -p dataset --unzip
 ```
+
+```
 dataset/
 └─ Car_Brand_Logos/
    ├─ Train/<brand>/*.jpg
    └─ Test/<brand>/*.jpg
-```
 
 Jika Hanya Tersedia Subfolder Per Kelas Tanpa `Train/Test`, Data Dibagi Otomatis Secara Stratified. Lokasi Dataset Dapat Ditimpa Lewat Variabel Lingkungan `IMAGES_DIR`.
+```
 
 ## Penggunaan
 
@@ -93,12 +95,12 @@ Buka <http://127.0.0.1:8000>
 
 ## API
 
-| Method | Endpoint   | Keterangan                                   |
-| ------ | ---------- | -------------------------------------------- |
-| GET    | `/health`  | Status API & kesiapan model                  |
-| GET    | `/classes` | Daftar kelas/brand yang dikenali             |
-| GET    | `/metrics` | Akurasi, loss, confusion matrix, per-kelas   |
-| POST   | `/predict` | Multipart `file` → prediksi Top-3            |
+| Method | Endpoint   | Keterangan                                 |
+| ------ | ---------- | ------------------------------------------ |
+| GET    | `/health`  | Status API & kesiapan model                |
+| GET    | `/classes` | Daftar kelas/brand yang dikenali           |
+| GET    | `/metrics` | Akurasi, loss, confusion matrix, per-kelas |
+| POST   | `/predict` | Multipart `file` → prediksi Top-3          |
 
 Contoh Respons `/predict`:
 
@@ -128,10 +130,10 @@ Mencakup Preprocessing, Pemuatan Dataset, Metrik Evaluasi, dan Logika Predictor 
 - Training Dan Inferensi Memakai Normalisasi `0..255 → -1..1` (Konvensi MobileNetV2). Bila Pernah Melatih Dengan Skema Lama (`/255`), Hapus `models/Model.keras` Dan `models/Class_indices.json` Sebelum Melatih Ulang.
 - Pesan "GPU Support Is Not Available On Native Windows" Bersifat Informatif, Training Berjalan Di CPU. Untuk GPU Gunakan WSL2.
 
+## Tim
+
+<a href="https://github.com/rizqidimas"><img src="https://github.com/rizqidimas.png" width="80"></a> <a href="https://github.com/mhmmdnrfhreza-code"><img src="https://github.com/mhmmdnrfhreza-code.png" width="80"></a>
+
 ## Lisensi
 
 MIT.
-
-## Tim
-
-| <img src="https://github.com/rizqidimas.png" width="80"><br>[Dimas Rizqi Purnomo](https://github.com/rizqidimas) |
