@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Model Artifacts
+backend/models/*.keras
+backend/models/*.h5
+backend/models/class_indices.json
+
+# Dataset
+dataset/
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/

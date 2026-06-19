@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Brand Logo Classifier</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <!-- <span class="logo-mark"></span> -->
+        <span class="brand-name">Car Brand Classifier</span>
+      </div>
+      <span class="status" id="apiStatus">menghubungkan…</span>
+    </header>
+
+    <main class="container">
+      <section class="intro">
+        <h1>Klasifikasi Logo Brand Mobil</h1>
+        <p class="subtitle">
+        Memprediksi Brand Beserta Tiga Kemungkinan Teratas.
+        </p>
+      </section>
+
+      <!-- Upload Box -->
+      <section
+        class="dropzone"
+        id="dropzone"
+        tabindex="0"
+        role="button"
+        aria-label="Unggah gambar logo"
+      >
+        <input type="file" id="fileInput" accept="image/png,image/jpeg" hidden />
+        <div class="dz-icon">↑</div>
+        <p class="dz-title">Seret & Lepas Gambar Logo / Klik Untuk Memilih</p>
+        <p class="dz-sub">JPG / PNG - Max 10 MB</p>
+      </section>
+
+      <p class="message" id="message" role="alert"></p>
+
+      <!-- Hasil Prediksi -->
+      <section class="card result" id="resultArea" hidden>
+        <div class="preview-wrap">
+          <img id="preview" alt="pre-view" />
+        </div>
+        <div class="prediction">
+          <p class="eyebrow">Prediksi</p>
+          <div class="top-pred">
+            <span class="label" id="topLabel">—</span>
+            <span class="confidence" id="topConfidence"></span>
+          </div>
+          <ul class="topk" id="topkList"></ul>
+        </div>
+      </section>
+
+      <!-- Evaluasi Model -->
+      <section class="section">
+        <div class="section-head">
+          <h2>Evaluasi Model</h2>
+          <span class="count" id="evalTag"></span>
+        </div>
+        <p class="section-sub" id="evalSub">
+          Ringkasan performa pada data uji.
+        </p>
+
+        <div class="stats" id="evalStats" hidden>
+          <div class="stat">
+            <span class="stat-value" id="statAccuracy">—</span>
+            <span class="stat-label">Akurasi</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="statMacroF1">—</span>
+            <span class="stat-label">Macro F1</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="statLoss">—</span>
+            <span class="stat-label">Loss</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="statSamples">—</span>
+            <span class="stat-label">Sampel uji</span>
+          </div>
+        </div>
+
+        <div id="cmBlock" hidden>
+          <h3 class="sub-head">Confusion Matrix</h3>
+          <!-- <p class="hint">Test</p> -->
+          <div class="cm-scroll">
+            <table class="cm" id="cmTable"></table>
+          </div>
+        </div>
+
+        <div id="pcBlock" hidden>
+          <h3 class="sub-head">Performa Per Kelas</h3>
+          <div class="table-scroll">
+            <table class="pc" id="pcTable"></table>
+          </div>
+        </div>
+
+        <p class="eval-note" id="evalNote" hidden></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>MobileNetV2 · Transfer Learning · FastAPI</span>
+    </footer>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>
